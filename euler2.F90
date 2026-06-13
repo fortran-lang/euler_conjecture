@@ -2,7 +2,7 @@ module ring_mod
 
    ! this module isolates all of the modulo ring arithmetic associated
    ! with the Euler conjecture search code.
-   
+
    implicit none
 
    private
@@ -10,7 +10,7 @@ module ring_mod
 
    ! ik is the kind value for an extended precision integer
    ! to compute i**5 values without overflow.
-   
+
    integer, parameter :: ik = selected_int_kind(18)
 
    integer, parameter :: jloop=1, kloop=2, lloop=3   ! j, k, and l loop level enums.
@@ -273,7 +273,7 @@ contains
          modulo_test = ring_modulo%allow(p)%jkl(i5modNx,loop)%map(mod(sum,N)) .eq. 0
          if ( modulo_test ) return   ! return ASAP.
       enddo
-      
+
       ring_modulo%kntf(loop) = ring_modulo%kntf(loop) + 1  ! number of .false. tests.
 
       return

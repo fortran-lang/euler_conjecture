@@ -30,7 +30,7 @@ program euler1
                sl = sk + n5(l)
                diff = i5 - sl
                if ( diff < 1 ) exit
-               
+
                mloop: do m = index_min( diff ), l    ! although written as a loop, m only cycles 1 or 2 times.
                   sm = sl + n5(m)
                   diff = i5 - sm
@@ -49,7 +49,7 @@ program euler1
                      cycle mloop
                   end select
                enddo mloop
-               
+
             enddo
          enddo
       enddo

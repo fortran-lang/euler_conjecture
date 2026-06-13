@@ -23,7 +23,7 @@ program euler0
                      nfound = nfound + 1
                      print fmtf, nfound, j, k, l, m, i, i**5
                      if ( nfound >= findmax ) exit outer
-                  endif                  
+                  endif
                enddo
             enddo
          enddo
