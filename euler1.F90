@@ -62,7 +62,6 @@ contains
    pure function index_min( v ) result( r )
       ! return an integer value r such that r**5 <= v.
       ! it need not be the largest value, but the closer to v the better.
-      implicit none
       integer                 :: r
       integer(ik), intent(in) :: v
 
@@ -72,7 +71,6 @@ contains
       enddo
       r = max( 1, r )               ! enforce lower bound of 1.
 
-      return
    end function index_min
 
 end program euler1

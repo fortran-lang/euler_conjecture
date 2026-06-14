@@ -55,7 +55,6 @@ contains
       ! achieved by using modulo arithmetic to limit the possibile
       ! matches of j**5 + k**5 + l**5 + m**5 with the target i**5.
 
-      implicit none
       class(allow_t), intent(out) :: allow
       integer, intent(in)         :: N      ! modulus value with range up to about 1000.
 
@@ -124,12 +123,10 @@ contains
          allow%jkl(i5x,jloop)%val  = val(1:nval)
       enddo
 
-      return
    end subroutine fill_allow
 
    subroutine print_stats( ring_modulo )
       ! print the modulo ring loop statistics.
-      implicit none
       class (ring_modulo_t), intent(in) :: ring_modulo
 
       integer     :: loop
@@ -145,12 +142,10 @@ contains
               & 'ratio=', real(rejected)/real(total)
       enddo
 
-      return
    end subroutine print_stats
 
    impure elemental subroutine print_allow( allow )
       ! print the contents of a scalar or array allow structures with annotations.
-      implicit none
       class(allow_t), intent(in) :: allow
 
       integer :: i5x, loop
@@ -173,13 +168,11 @@ contains
       enddo
       print cfmt
 
-      return
    end subroutine print_allow
 
    subroutine set_val_map( mask, map, val, nval )
       ! search mask(0:) for .true. entries, set map(0:), and save the indices in val(:).
       ! the arrays map(0:) and val(:) are inverse mappings.
-      implicit none
       logical, intent(in)  :: mask(0:) ! (0:N-1).
       integer, intent(out) :: map(0:)  ! (0:N-1)
       integer, intent(out) :: val(:)   ! allow(1:nval) are the allowed values.
@@ -197,14 +190,12 @@ contains
          endif
       enddo
 
-      return
    end subroutine set_val_map
 
    subroutine update_mask( N, m, val, mask )
       ! update mask(:) using m and val(:).
       ! this is the modulo N ring addition of m with the additive inverse of the elements of val(:).
       ! mask(k)==.true. if k is in the output set.
-      implicit none
       integer, intent(in)    :: N        ! the current modulus.
       integer, intent(in)    :: m        ! the target value.
       integer, intent(in)    :: val(:)   ! set of input values.
@@ -216,12 +207,10 @@ contains
          mask( modulo( m - val(p), N ) ) = .true.
       enddo
 
-      return
    end subroutine update_mask
 
    subroutine init_ring_modulo( ring_modulo, modvals )
       ! initialize, allocate, and fill the ring_modulo derived type.
-      implicit none
       class(ring_modulo_t), intent(out) :: ring_modulo
       integer, intent(in)               :: modvals(:)
 
@@ -232,12 +221,10 @@ contains
 
       call ring_modulo%allow%fill( modvals )  ! (:)
 
-      return
    end subroutine init_ring_modulo
 
    subroutine set_i5modN( ring_modulo, i5 )
       ! set all of the mapped modulo(i**5,N) values.
-      implicit none
       class(ring_modulo_t), intent(inout) :: ring_modulo
       integer(ik), intent(in)             :: i5       ! i**5 value.
 
@@ -249,12 +236,10 @@ contains
          ring_modulo%allow(p)%i5modNx = ring_modulo%allow(p)%i%map( modulo(i5,N) )
       enddo
 
-      return
    end subroutine set_i5modN
 
    logical function modulo_test( ring_modulo, loop, sum )
       ! perform modulo tests on the loop index.
-      implicit none
       class(ring_modulo_t), intent(inout) :: ring_modulo
       integer, intent(in)                 :: loop   ! loop level: j=>1, k=>2, l=>3.
       integer(ik), intent(in)             :: sum    ! j**5 + k**5 +... partial sum.
@@ -276,7 +261,6 @@ contains
 
       ring_modulo%kntf(loop) = ring_modulo%kntf(loop) + 1  ! number of .false. tests.
 
-      return
    end function modulo_test
 
 end module ring_mod
@@ -363,7 +347,6 @@ contains
    pure function index_min( v ) result( r )
       ! return an integer value r such that r**5 <= v.
       ! it need not be the largest value, but the closer to v the better.
-      implicit none
       integer                 :: r
       integer(ik), intent(in) :: v
 
@@ -373,7 +356,6 @@ contains
       enddo
       r = max( 1, r )               ! enforce lower bound of 1.
 
-      return
    end function index_min
 
 end program euler2
