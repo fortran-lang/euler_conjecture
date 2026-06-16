@@ -1,4 +1,4 @@
-# The Euler Conjecture: Three Fortran Codes
+# The Euler Sum of Powers Conjecture: Three Fortran Codes
 
 The Euler sum of powers conjecture (1769) was disproved by [Lander and Parkin (1966)](https://doi.org/10.1090/s0002-9904-1966-11654-3) using a direct search algorithm written in Fortran on a CDC 6600 computer.
 This repository contains three Fortran codes that implement a similar search algorithm using language features available in the Fortran 2018 standard.
